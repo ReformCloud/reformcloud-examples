@@ -55,12 +55,12 @@ public final class AddonsExample extends ControllerAddonImpl implements Serializ
     @Override
     public void onAddonLoading() {
         //Prints a line to the console
-        ReformCloudController.getInstance().getLoggerProvider().info().accept("Hello world");
+        ReformCloudController.getInstance().getColouredConsoleProvider().info().accept("Hello world");
     }
 
     @Override
     public void onAddonReadyToClose() {
         //Prints an error to the console
-        ReformCloudController.getInstance().getLoggerProvider().serve().accept("Goodbye world :(");
+        ReformCloudController.getInstance().getColouredConsoleProvider().serve().accept("Goodbye world :(");
     }
 }

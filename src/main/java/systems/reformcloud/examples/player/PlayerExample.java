@@ -5,7 +5,7 @@
 package systems.reformcloud.examples.player;
 
 import systems.reformcloud.ReformCloudController;
-import systems.reformcloud.api.IDefaultPlayerProvider;
+import systems.reformcloud.api.DefaultPlayerProvider;
 import systems.reformcloud.meta.info.ServerInfo;
 import systems.reformcloud.player.implementations.OfflinePlayer;
 import systems.reformcloud.player.implementations.OnlinePlayer;
@@ -51,7 +51,7 @@ public final class PlayerExample implements Serializable {
         System.out.println(onlinePlayer.getCurrentProxy() + "/Server=" + onlinePlayer.getCurrentServer());
 
         //Get the player executor apu instance
-        IDefaultPlayerProvider iDefaultPlayerProvider = IDefaultPlayerProvider.instance.get();
+        DefaultPlayerProvider defaultPlayerProvider = DefaultPlayerProvider.instance.get();
 
         //Get the server info of Lobby-01
         ServerInfo serverInfo = ReformCloudController.getInstance().getServerInfo("Lobby-01");
@@ -63,15 +63,15 @@ public final class PlayerExample implements Serializable {
         }
 
         //Sends the player to the server
-        iDefaultPlayerProvider.sendPlayer(onlinePlayer.getUniqueID(), serverInfo);
+        defaultPlayerProvider.sendPlayer(onlinePlayer.getUniqueID(), serverInfo);
 
         //Sends the player to the server named Lobby-01
-        iDefaultPlayerProvider.sendPlayer(onlinePlayer.getUniqueID(), "Lobby-01");
+        defaultPlayerProvider.sendPlayer(onlinePlayer.getUniqueID(), "Lobby-01");
 
         //Sends the player a specific message
-        iDefaultPlayerProvider.sendMessage(onlinePlayer.getUniqueID(), "_Klaro is cool");
+        defaultPlayerProvider.sendMessage(onlinePlayer.getUniqueID(), "_Klaro is cool");
 
         //Kicks the player from the network
-        iDefaultPlayerProvider.kickPlayer(onlinePlayer.getUniqueID(), "Good bye");
+        defaultPlayerProvider.kickPlayer(onlinePlayer.getUniqueID(), "Good bye");
     }
 }

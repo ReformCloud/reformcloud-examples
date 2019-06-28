@@ -4,9 +4,8 @@
 
 package systems.reformcloud.examples.service;
 
-import systems.reformcloud.api.ICloudService;
+import systems.reformcloud.api.CloudService;
 
-import javax.swing.*;
 import java.io.Serializable;
 import java.util.Locale;
 import java.util.UUID;
@@ -18,18 +17,18 @@ import java.util.UUID;
 public final class CloudServiceExample implements Serializable {
     public CloudServiceExample() {
         //Get the internal cloud service
-        ICloudService iCloudService = ICloudService.instance.get();
+        CloudService cloudService = CloudService.instance.get();
 
         //Patches a task async
-        iCloudService.patchAsync(
+        cloudService.patchAsync(
                 () -> String.format(Locale.ROOT, "F-%d", 1),
                 (v, t) -> t.printStackTrace()
         );
 
         //Get an online player which is cached
-        iCloudService.getCachedPlayer("_Klaro");
+        cloudService.getCachedPlayer("_Klaro");
 
         //Works fine with uuid too
-        iCloudService.getCachedPlayer(UUID.randomUUID());
+        cloudService.getCachedPlayer(UUID.randomUUID());
     }
 }
